@@ -72,8 +72,11 @@ function EditControl(props) {
     ) {
       return false;
     }
+    //Update ref value to current props. Otherwise the if-statement above will block switching back to original values.
+    propsRef.current = props;
+    
     const { map } = context;
-
+    
     drawRef.current.remove(map);
     drawRef.current = createDrawElement(props, context);
     drawRef.current.addTo(map);
